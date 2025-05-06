@@ -16,7 +16,7 @@ export default function SpendingForm({ spendings, setSpendings }: SpendingFormPr
 
 
     const [type, setType] = useState("");
-    const [cost, setCost] = useState<number|"">("");
+    const [cost, setCost] = useState<string>("");
     const [content, setContent] = useState("");
 
     function handleClick() {
@@ -24,6 +24,11 @@ export default function SpendingForm({ spendings, setSpendings }: SpendingFormPr
             alert("請填寫完整資訊！");
             return;
         }
+        if (isNaN(Number(cost))) {
+            alert("請輸入有效的數字！");
+            return;
+        }
+        
         setSpendings([...spendings,{id:Math.random(),type,cost: Number(cost),content}]);
         setType("");
         setCost("");
@@ -37,7 +42,7 @@ export default function SpendingForm({ spendings, setSpendings }: SpendingFormPr
             <option value="in">收入</option>
             <option value="out">支出</option>
         </select>
-        <input type="text" placeholder="金額" value={cost} onChange={(e) => { setCost(Number(e.target.value)) }} />
+        <input type="text" placeholder="金額" value={cost} onChange={(e) => {setCost(e.target.value); }} />
         <input type="text" placeholder="項目" value={content} onChange={(e) => { setContent(e.target.value) }} />
         <button className="spendingForm__btn"onClick={handleClick}>新增</button>
     </div>

@@ -12,7 +12,7 @@ export default function Header() {
         <header>
             <nav>
                 <div id="header" className="header">
-                    <div className="text-lg-700" onClick={toHome}>React 記帳程式</div>
+                    <div className="text-lg-700" onClick={toHome}>TRACK-SPENDING</div>
                 </div>
             </nav>
         </header>

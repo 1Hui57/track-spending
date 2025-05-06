@@ -10,6 +10,67 @@ body{
     margin: 0;
     background-color: var(--color-zinc-100);
 }
+
+.accountWrapper{
+    width: 330px;
+    height: 400px;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:var(--color-white-100);
+    padding: 30px;
+    box-shadow: 3px 2px 20px 3px var(--color-zinc900-60);
+    h3{
+        color:var(--color-primary-600)
+
+    }
+}
+
+.accountWrapper__singInOrUp{
+    margin: 25px 0;
+    display: flex;
+    gap: 15px;
+    button{
+        background-color: var(--color-white-100);
+        color:var(--color-zinc-800);
+        border-radius: 0;
+        cursor: pointer;
+    }
+}
+
+.actionSingBtn{
+    border-bottom: 2.5px solid  var(--color-primary-300);
+}
+
+.signForm{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+    input{
+        height: 35px;
+        border-radius: 25px;
+        padding-left: 15px;
+    }
+    label{
+        height: 35px;
+        display: flex;
+        align-items:center;
+        gap:5px;
+        input{
+            padding-left: 0px;
+        }
+    }
+    button{
+        height: 35px;
+        border-radius: 25px;
+        padding-left: 15px;
+        background-color: var(--color-primary-300);
+        box-shadow: 1px 1px 2px;
+    }
+}
+
 .spendingForm{
     width: 600px;
     margin: 50px auto;

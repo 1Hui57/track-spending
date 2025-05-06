@@ -108,9 +108,10 @@ input{
 }
 
 button{
-  /* background-color: var(--color-primary-300);
-  border: 1px solid var(--color-primary-300); */
+  background-color: none;
+  border: none;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .text-xs-400{
