@@ -10,3 +10,31 @@ body{
     margin: 0;
     background-color: var(--color-zinc-100);
 }
+.spendingForm{
+    width: 600px;
+    margin: 50px auto;
+}
+.spendingWrapper{
+    width: 600px;
+    margin: 50px auto;
+}
+
+.spendingList{
+    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    gap:200px;
+}
+
+.spendingList__cost--in{
+    color: var(--color-primary-300);
+}
+
+.spendingList__cost--out{
+    color: var(--color-red-300);
+}
+
+.totalList{
+    display: flex;
+    justify-content: space-between;
+}

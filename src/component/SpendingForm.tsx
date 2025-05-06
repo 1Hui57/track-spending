@@ -30,7 +30,7 @@ export default function SpendingForm({ spendings, setSpendings }: SpendingFormPr
         setContent("");
 
     }
-    return <div>
+    return <div id="spendingForm" className="spendingForm">
 
         <select name="type" id="type" value={type} onChange={(e) => setType(e.target.value)}>
             <option value="">請選擇收入或支出</option>

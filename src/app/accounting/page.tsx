@@ -1,5 +1,6 @@
 'use client'
 import SpendingForm from "@/component/SpendingForm";
+import SpendingList from "@/component/SpendingList";
 import { useState } from "react";
 
 export default function Accounting(){
@@ -12,10 +13,13 @@ export default function Accounting(){
     }
     const [spendings, setSpendings]=useState<Spending[]>([]);
 
+    function deleteList(id:number){
+        setSpendings(spendings.filter(item=>item.id!==id))
+    }
     return(
         <>
-            <p>記帳頁面</p>
             <SpendingForm spendings={spendings} setSpendings={setSpendings}/>
+            <SpendingList spendings={spendings} deleteList={deleteList}/>
         </>
     )
 }
