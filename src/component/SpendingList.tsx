@@ -29,14 +29,14 @@ export default function SpendingList({ spendings, deleteList }: SpendingFormProp
                             <div className="spendingList" key={item.id}>
                                 <p>{item.content}</p>
                                 <p className="spendingList__cost--in">{item.cost}</p>
-                                <button onClick={() => deleteList(item.id)}>刪除</button>
+                                <button className="spendingList__delBtn text-sm-400"onClick={() => deleteList(item.id)}>刪除</button>
                             </div>
                         )
                         : (
                             <div className="spendingList" key={item.id}>
                                 <p>{item.content}</p>
                                 <p className="spendingList__cost--out">-{item.cost}</p>
-                                <button onClick={() => deleteList(item.id)}>刪除</button>
+                                <button className="spendingList__delBtn text-sm-400" onClick={() => deleteList(item.id)}>刪除</button>
                             </div>
                         )
                 })

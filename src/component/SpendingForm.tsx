@@ -37,8 +37,8 @@ export default function SpendingForm({ spendings, setSpendings }: SpendingFormPr
             <option value="in">收入</option>
             <option value="out">支出</option>
         </select>
-        <input type="text" value={cost} onChange={(e) => { setCost(Number(e.target.value)) }} />
-        <input type="text" value={content} onChange={(e) => { setContent(e.target.value) }} />
-        <button onClick={handleClick}>新增</button>
+        <input type="text" placeholder="金額" value={cost} onChange={(e) => { setCost(Number(e.target.value)) }} />
+        <input type="text" placeholder="項目" value={content} onChange={(e) => { setContent(e.target.value) }} />
+        <button className="spendingForm__btn"onClick={handleClick}>新增</button>
     </div>
 }
