@@ -3,6 +3,12 @@
     background-color: #83d5d7;
     color: #565656;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     padding: 0 30px;
+    button{
+        width:60px;
+        height:30px;
+        border-radius: 25px;
+    }
 }

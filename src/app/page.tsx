@@ -1,16 +1,30 @@
 'use client'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { auth } from '@/lib/firebase';
 import {
     createUserWithEmailAndPassword, signInWithEmailAndPassword,
-    setPersistence, browserLocalPersistence, browserSessionPersistence
+    setPersistence, browserLocalPersistence, browserSessionPersistence, onAuthStateChanged
 } from "firebase/auth";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
 export default function Home() {
 
     const router = useRouter();
 
+    useEffect(() => {
+        // 建立一個監聽器可以監聽firebase的登入狀態
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log(user);
+                router.push('/accounting');
+            }
+
+        });
+        //  return 一個清除函數
+        return () => unsubscribe();
+    }, [router])
     // 註冊、登入使用useSate
     const [isSignIn, setIsSignin] = useState(true);
     const [email, setEmail] = useState('');
@@ -33,7 +47,7 @@ export default function Home() {
         e.preventDefault();
         setError('');
         try {
-            await setPersistence(auth, isStayIn ?  browserLocalPersistence:browserSessionPersistence);
+            await setPersistence(auth, isStayIn ? browserLocalPersistence : browserSessionPersistence);
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             console.log(userCredential);
             router.push('/accounting');
@@ -52,8 +66,14 @@ export default function Home() {
             return;
         }
         try {
-            await setPersistence(auth, isStayIn ?  browserLocalPersistence:browserSessionPersistence);
-            await createUserWithEmailAndPassword(auth, email, password);
+            await setPersistence(auth, isStayIn ? browserLocalPersistence : browserSessionPersistence);
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            // 創建使用者的資料表到firestore
+            const user = userCredential.user;
+            await setDoc(doc(db, "users", user.uid), {
+                email: user.email,
+                createdAt: serverTimestamp(),
+            });
             router.push('/accounting');
         } catch (err: any) {
             if (err.message === "Firebase: Password should be at least 6 characters (auth/weak-password).") {

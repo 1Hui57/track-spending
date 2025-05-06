@@ -1,4 +1,7 @@
 import { Dispatch, SetStateAction, useState } from "react";
+import { db } from "@/lib/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+// import { auth } from '@/lib/firebase';
 
 interface Spending{
     id:number;
@@ -8,18 +11,18 @@ interface Spending{
 }
 
 interface SpendingFormProps {
-    spendings: Spending[];
-    setSpendings: Dispatch<SetStateAction<Spending[]>>;
+    // spendings: Spending[];
+    // setSpendings: Dispatch<SetStateAction<Spending[]>>;
+    userId:string;
 }
 
-export default function SpendingForm({ spendings, setSpendings }: SpendingFormProps,) {
-
-
+export default function SpendingForm({userId}: SpendingFormProps,) {
+    
     const [type, setType] = useState("");
     const [cost, setCost] = useState<string>("");
     const [content, setContent] = useState("");
 
-    function handleClick() {
+    async function handleClick() {
         if (!type || !cost || !content) {
             alert("請填寫完整資訊！");
             return;
@@ -28,12 +31,25 @@ export default function SpendingForm({ spendings, setSpendings }: SpendingFormPr
             alert("請輸入有效的數字！");
             return;
         }
-        
-        setSpendings([...spendings,{id:Math.random(),type,cost: Number(cost),content}]);
-        setType("");
-        setCost("");
-        setContent("");
+        const newSpending = {
+            type,
+            cost:Number(cost),
+            content,
+            createTime:serverTimestamp(),
+        };
 
+        try{
+            await addDoc(collection(db, "users", userId, "accounting"), newSpending);
+            // setSpendings([...spendings,{id:Math.random(),type,cost: Number(cost),content}]);
+            setType("");
+            setCost("");
+            setContent("");
+            console.log("寫入成功");
+        }
+        catch(error){
+            console.error(" 寫入 Firestore 失敗：", error);
+            alert("新增資料時發生錯誤，請稍後再試！");
+        }
     }
     return <div id="spendingForm" className="spendingForm">
 
