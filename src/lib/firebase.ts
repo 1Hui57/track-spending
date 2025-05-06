@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+// import { getAnalytics } from "firebase/analytics";
 // **新增這兩行來導入 Auth 和 Firestore 的函數**
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
@@ -23,10 +23,10 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+// const analytics = getAnalytics(app);
 
 // **新增這兩行來取得 Auth 和 Firestore 的服務實例**
 const auth = getAuth(app); // 取得 Authentication 服務的實例
 const db = getFirestore(app); // 取得 Cloud Firestore 資料庫的實例
-
+export{db,auth}
 // 現在你有了 app, analytics, auth, 和 db 這幾個實例，可以用它們來呼叫 Firebase 的功能了！

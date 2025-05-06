@@ -39,6 +39,11 @@ body{
     }
 }
 
+.accountWrapper__error{
+    color:var(--color-red-600);
+    margin-top: 10px;
+}
+
 .actionSingBtn{
     border-bottom: 2.5px solid  var(--color-primary-300);
 }
