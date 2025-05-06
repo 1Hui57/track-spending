@@ -1,5 +1,208 @@
-* {
-    margin: 0;
+
+
+  :root {
+    --color-primary-100:#effbfc;
+    --color-primary-200:#ceeeef;
+    --color-primary-300:#83d5d7;
+    --color-primary-400:#39bcbe;
+    --color-primary-500:#08abae;
+    --color-primary-600:#08a2a5;
+    --color-primary-800:#06898b;
+
+    --color-zinc-50:#fafafa;
+    --color-zinc-100:#f4f4f5;
+    --color-zinc-200:#e4e4e7;
+    --color-zinc-300:#d4d4d8;
+    --color-zinc-400:#a1a1a9;
+    --color-zinc-500:#717179;
+    --color-zinc-600:#52525a;
+    --color-zinc-700:#3F3F45;
+    --color-zinc-800:#27272a;
+    --color-zinc-900:#18181b;
+
+    --color-zinc900-5:#18181b0d;
+    --color-zinc900-20:#18181b33;
+    --color-zinc900-40:#18181b66;
+    --color-zinc900-50:#18181b80;
+    --color-zinc900-60:#18181b99;
+    --color-zinc900-80:#18181bcc;
+    --color-zinc900-100:#18181b;
+
+    --color-white-5:#ffffff0d;
+    --color-white-20:#ffffff33;
+    --color-white-40:#ffffff66;
+    --color-white-50:#ffffff80;
+    --color-white-60:#ffffff99;
+    --color-white-80:#ffffffcc;
+    --color-white-100:#ffffff;
+
+    --color-yellow-100:#fff5ec;
+    --color-yellow-200:#feecd8;
+    --color-yellow-300:#fdcf9e;
+    --color-yellow-400:#fcb165;
+    --color-yellow-500:#fb9e3e;
+    --color-yellow-600:#ee963b;
+    --color-yellow-800:#c97e32;
+
+    --color-red-100:#fdefed;
+    --color-red-200:#fcdfdb;
+    --color-red-300:#f7aea4;
+    --color-red-400:#f27e6e;
+    --color-red-500:#ef5e4a;
+    --color-red-600:#e35946;
+    --color-red-800:#bf4b3b;
+    
+    --font-weight-400: 400;
+    --font-weight-500: 500;
+    --font-weight-700: 700;
+    --font-family: 'Noto Sans TC', 'Roboto', sans-serif;
+
+}
+
+h1{
+    font-size: 2rem;
+    font-weight: var(--font-weight-700);
+    line-height: 2.375rem;
+    font-family: var(--font-family);
     padding: 0;
-    box-sizing: border-box;
-  }
+    margin: 0;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+h2{
+    font-size: 1.875rem; /* 30px */
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-700);
+    line-height: 2.25rem;
+    padding: 0;
+    margin: 0;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+h3{ /* text-2xl-700 */
+    font-size: 1.5rem; /* 24px */
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-700);
+    line-height: 2rem;
+    padding: 0;
+    margin: 0;
+}
+
+p{ /* text-base-500 */
+    font-size: 1rem;
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-500);
+    line-height: 1.5rem;
+    padding: 0;
+    margin: 0;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+.text-xs-400{
+    font-size: 0.75rem; /* 12px */
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-400);
+    line-height: 1rem;
+}
+
+.text-sm-400{
+    font-size: 0.875rem; /* 14px */
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-400);
+    line-height: 1.25rem;
+}
+
+.text-base-400{
+    font-size: 1rem;
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-400);
+    line-height: 1.5rem;
+}
+
+.text-lg-400{
+    font-size: 1.125rem; /* 18px */
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-400);
+    line-height: 1.75rem;
+}
+
+.text-xl-400{
+    font-size: 1.25rem; /* 20px */
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-400);
+    line-height: 1.75rem;
+}
+
+.text-xs-500{
+    font-size: 0.75rem; /* 12px */
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-500);
+    line-height: 1rem;
+}
+
+.text-sm-500{
+    font-size: 0.875rem; /* 14px */
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-500);
+    line-height: 1.25rem;
+}
+
+.text-base-500{
+    font-size: 1rem;
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-500);
+    line-height: 1.5rem;
+}
+
+.text-lg-500{
+    font-size: 1.125rem; /* 18px */
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-500);
+    line-height: 1.75rem;
+}
+
+.text-xl-500{
+    font-size: 1.25rem; /* 20px */
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-500);
+    line-height: 1.75rem;
+}
+
+
+.text-sm-700{
+    font-size: 0.875rem; /* 14px */
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-700);
+    line-height: 1.25rem;
+}
+
+.text-base-700{
+    font-size: 1rem;
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-700);
+    line-height: 1.5rem;
+}
+
+.text-lg-700{
+    font-size: 1.125rem; /* 18px */
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-700);
+    line-height: 1.75rem;
+}
+
+.text-xl-700{
+    font-size: 1.25rem; /* 20px */
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-700);
+    line-height: 1.75rem;
+}
+
+.text-2xl-700{
+    font-size: 1.5rem; /* 24px */
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-700);
+    line-height: 2rem;
+}

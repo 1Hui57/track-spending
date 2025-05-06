@@ -1,0 +1,12 @@
+@import url(global.css);
+
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+/* root */
+body{
+    padding: 0;
+    margin: 0;
+    background-color: var(--color-zinc-100);
+}

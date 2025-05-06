@@ -1,14 +1,18 @@
-// Header
-import "../style/header.css"
+'use client'
+import { useRouter } from 'next/navigation';
+import "../style/header.css";
 
 export default function Header() {
-
+    const router = useRouter();
+    function toHome():void{
+        router.back()
+    }
 
     return (
         <header>
             <nav>
                 <div id="header" className="header">
-                    <h3>React 記帳程式</h3>
+                    <div className="text-lg-700" onClick={toHome}>React 記帳程式</div>
                 </div>
             </nav>
         </header>
