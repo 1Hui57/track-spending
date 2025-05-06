@@ -2,7 +2,10 @@
 import { useRouter } from 'next/navigation'
 import { useState } from 'react';
 import { auth } from '@/lib/firebase';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {
+    createUserWithEmailAndPassword, signInWithEmailAndPassword,
+    setPersistence, browserLocalPersistence, browserSessionPersistence
+} from "firebase/auth";
 
 export default function Home() {
 
@@ -14,7 +17,7 @@ export default function Home() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
-
+    const [isStayIn, setIsStayIn] = useState(true);
     function changeSignIn() {
         setIsSignin(true);
         setError("");
@@ -30,6 +33,7 @@ export default function Home() {
         e.preventDefault();
         setError('');
         try {
+            await setPersistence(auth, isStayIn ?  browserLocalPersistence:browserSessionPersistence);
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             console.log(userCredential);
             router.push('/accounting');
@@ -48,6 +52,7 @@ export default function Home() {
             return;
         }
         try {
+            await setPersistence(auth, isStayIn ?  browserLocalPersistence:browserSessionPersistence);
             await createUserWithEmailAndPassword(auth, email, password);
             router.push('/accounting');
         } catch (err: any) {
@@ -81,7 +86,7 @@ export default function Home() {
                     <input type="password" placeholder='Password' value={password}
                         onChange={(e) => setPassword(e.target.value)} />
                     <label className='text-xs-400'>
-                        <input type="checkbox" id='stayIn' />
+                        <input type="checkbox" id='stayIn' checked={isStayIn} onChange={(e) => { setIsStayIn(e.target.checked) }} />
                         Stay signed in.
                     </label >
                     <button type='submit'>SIGN IN</button>
@@ -95,8 +100,8 @@ export default function Home() {
                     <input type="password" placeholder='Confirm Password' value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)} />
                     <label className='text-xs-400'>
-                        <input type="checkbox" id='stayIn' />
-                        Sign in after registration.
+                        <input type="checkbox" id='stayIn' checked={isStayIn} onChange={(e) => { setIsStayIn(e.target.checked) }} />
+                        Stay signed in after successful registration.
                     </label>
                     <button type='submit'>SIGN Up</button>
                 </form>)}
