@@ -22,23 +22,30 @@ export default function SpendingList({ userId }: SpendingListProps) {
     const [spendings, setSpendings] = useState<Spending[]>([]);
 
     useEffect(() => {
+        // 定義q為查詢條件，query(內為查詢路徑)
         const q = query(
             collection(db, "users", userId, "accounting"),
-            orderBy("createTime", "desc") // 依建立時間排序（要確保你有加 createdAt 欄位）
+            orderBy("createTime", "desc") // 依建立時間排序
         );
-
+        // unsubscribe是停止監聽的函式
+        // onSnapshot監聽q這個查詢的即時變化，當資料有變更就會自動觸發
+        // onSnapshot(參數一,參數二):參數一是路徑，參數二會是一個callback function
         const unsubscribe = onSnapshot(q, (snapshot) => {
-            const data = snapshot.docs.map(doc => ({
-                id: doc.id,
-                ...doc.data()
-            })) as Spending[];
+            //監聽後，當資料有變動就會執行此段程式
+            const data:Spending[] = snapshot.docs.map(doc => {
+                // doc.data()可以取的該筆document的所有欄位，並回傳一個JS的物件
+                const spendingData = doc.data() as Omit<Spending,"id">;
+                return {                
+                    id: doc.id,
+                    ...spendingData}
+            });
             setSpendings(data);
-            console.log(spendings);
+            // console.log(spendings);
         });
 
         return () => unsubscribe();
     }, [userId]);
-    console.log(spendings);
+    // console.log(spendings);
     async function deleteList(id: string) {
         try {
           await deleteDoc(doc(db, "users", userId, "accounting", id));
@@ -47,7 +54,7 @@ export default function SpendingList({ userId }: SpendingListProps) {
           console.error("刪除失敗：", error);
         }
       }
-      console.log(spendings);
+    //   console.log(spendings);
 
     function calculateTotal(spendings: Spending[]): number {
         let total: number = 0;

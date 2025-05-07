@@ -32,6 +32,7 @@ export default function Home() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
     const [isStayIn, setIsStayIn] = useState(true);
+
     function changeSignIn() {
         setIsSignin(true);
         setError("");
@@ -48,8 +49,7 @@ export default function Home() {
         setError('');
         try {
             await setPersistence(auth, isStayIn ? browserLocalPersistence : browserSessionPersistence);
-            const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            console.log(userCredential);
+            await signInWithEmailAndPassword(auth, email, password);
             router.push('/accounting');
         } catch (err: any) {
             // console.log("錯誤訊息",err.message);
@@ -68,7 +68,7 @@ export default function Home() {
         try {
             await setPersistence(auth, isStayIn ? browserLocalPersistence : browserSessionPersistence);
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            // 創建使用者的資料表到firestore
+            // 創建使用者的資料表到firestore，以Auth生成的user.uid當作資料表名稱
             const user = userCredential.user;
             await setDoc(doc(db, "users", user.uid), {
                 email: user.email,
@@ -88,10 +88,7 @@ export default function Home() {
         }
     };
 
-    // 跳轉到 /accounting 頁面
-    function onStartBtnClick(): void {
-        router.push("/accounting");
-    }
+
     return (
         <div className='accountWrapper'>
             <h3>Track-Spending</h3>

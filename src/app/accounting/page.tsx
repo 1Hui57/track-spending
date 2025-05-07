@@ -8,12 +8,12 @@ import { auth } from '@/lib/firebase';
 
 export default function Accounting() {
     // 定義 Spending 介面
-    interface Spending {
-        id: number;
-        type: string;
-        cost: number;
-        content: string;
-    }
+    // interface Spending {
+    //     id: number;
+    //     type: string;
+    //     cost: number;
+    //     content: string;
+    // }
     // const [spendings, setSpendings] = useState<Spending[]>([]);
     const router = useRouter();
     const [isLoading, setIsloading] = useState(true);
@@ -34,9 +34,7 @@ export default function Accounting() {
     if (isLoading) return <p>載入中...</p>;
     if (!userId) return null;
 
-    // function deleteList(id: number) {
-    //     setSpendings(spendings.filter(item => item.id !== id))
-    // }
+
     return (
         <>
             <SpendingForm  userId={userId}/>

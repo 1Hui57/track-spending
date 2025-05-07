@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { db } from "@/lib/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-// import { auth } from '@/lib/firebase';
 
-interface Spending{
-    id:number;
-    type:string;
-    cost:number;
-    content:string;
-}
+// interface Spending{
+//     id:number;
+//     type:string;
+//     cost:number;
+//     content:string;
+// }
 
 interface SpendingFormProps {
     // spendings: Spending[];
@@ -27,6 +26,7 @@ export default function SpendingForm({userId}: SpendingFormProps,) {
             alert("請填寫完整資訊！");
             return;
         }
+        // isNaN 判斷cost轉成number後是不是NaN
         if (isNaN(Number(cost))) {
             alert("請輸入有效的數字！");
             return;
@@ -44,7 +44,7 @@ export default function SpendingForm({userId}: SpendingFormProps,) {
             setType("");
             setCost("");
             setContent("");
-            console.log("寫入成功");
+            // console.log("寫入成功");
         }
         catch(error){
             console.error(" 寫入 Firestore 失敗：", error);
