@@ -10,5 +10,9 @@
         width:60px;
         height:30px;
         border-radius: 25px;
+        transition: 0.4s;
+        &:hover{
+            background-color: #ffffff99;
+        }
     }
 }
