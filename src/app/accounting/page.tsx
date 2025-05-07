@@ -3,7 +3,7 @@ import SpendingForm from "@/component/SpendingForm";
 import SpendingList from "@/component/SpendingList";
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 
 export default function Accounting() {

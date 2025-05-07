@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 import { db } from "@/lib/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 // import { auth } from '@/lib/firebase';
@@ -52,7 +52,6 @@ export default function SpendingForm({userId}: SpendingFormProps,) {
         }
     }
     return <div id="spendingForm" className="spendingForm">
-
         <select name="type" id="type" value={type} onChange={(e) => setType(e.target.value)}>
             <option value="">請選擇收入或支出</option>
             <option value="in">收入</option>
