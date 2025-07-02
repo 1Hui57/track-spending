@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Track-Spending
 
-## Getting Started
+- [Introduction](#introduction)
+- [What Can You Do with Track-Spending?](#what-can-you-do-with-track-spending)
+- [Techniques](#techniques)
+- [Key Features & Highlights](#key-features--highlights)
+- [Contact](#contact)
 
-First, run the development server:
+## Introduction
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Simple and practical web application to record daily expenses and income, designed for personal use with Firebase integration.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**_Link：_**[https://journify-olive.vercel.app/](https://journify-olive.vercel.app/)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Test account : test@test.com
+- Test password : test123
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## What Can You Do with Track-Spending?
 
-## Learn More
+- **Record Expenses & Income:** Easily add new spending or income records with type, amount, and description.
+- **View & Manage Records:** Browse your spending history in real-time, calculate totals, and delete items if needed.
+- **User Authentication:** Secure login and logout system to manage personal financial data.
 
-To learn more about Next.js, take a look at the following resources:
+## Techniques
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Front-End
+- **Next.js**
+  - App Router
+- **React**
+  - React Hooks：`useState`, `useEffect`
+- **TypeScript**
+- **Tailwind CSS**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Back-End
+- **Firebase**
+  - Firestore Database for storing user spending records
+  - Authentication for secure user login
 
-## Deploy on Vercel
+### Deployment
+- **Vercel**
+    - Vercel for fast and convenient front-end hosting
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Key Features & Highlights
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Expense & Income Tracking:** Add records with type, amount, and description through an interactive form.
+- **Real-Time Record List:** Automatically display updated records with real-time Firestore listener, including total calculation and delete functionality.
+- **User Authentication:** Secure login and logout using Firebase Authentication to protect personal financial data.
+- **Responsive Layout:** Simple, mobile-friendly interface for easy use on different devices.
+
+## Contact
+* **Name:** 周意惠
+* **Email:** melody870507@gmail.com
