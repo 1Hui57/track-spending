@@ -10,7 +10,7 @@
 
 Simple and practical web application to record daily expenses and income, designed for personal use with Firebase integration.
 
-**_Link：_**[https://journify-olive.vercel.app/](https://journify-olive.vercel.app/)
+**_Link：_**[https://track-spending.vercel.app/](https://track-spending.vercel.app/)
 
 - Test account : test@test.com
 - Test password : test123
