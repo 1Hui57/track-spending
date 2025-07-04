@@ -33,6 +33,17 @@ export default function Home() {
     const [error, setError] = useState('');
     const [isStayIn, setIsStayIn] = useState(true);
 
+    useEffect(() => {
+        if (isSignIn) {
+            setEmail('test@test.com');
+            setPassword('test123');
+        }
+        else{
+            setEmail('');
+            setPassword('');
+        }
+    }, [isSignIn])
+
     function changeSignIn() {
         setIsSignin(true);
         setError("");
